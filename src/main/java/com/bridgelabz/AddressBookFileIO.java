@@ -12,7 +12,7 @@ public class AddressBookFileIO {
         try {
             //creating new BufferedWriter for the output file
             bufferedWriter = new BufferedWriter(new FileWriter(file));
-            //iterate map entries
+            //iterating the map entries
             for (Map.Entry<String, AddressBook> entry : addressBook.entrySet()) {
                 //put key and value separated by a colon
                 bufferedWriter.write(entry.getKey() + ":" + entry.getValue());

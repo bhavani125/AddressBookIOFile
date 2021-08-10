@@ -116,8 +116,7 @@ public class AddressBook {
         String email = sc.nextLine();
         return new Contacts(firstName, lastName, address, city, state, zip, phoneNum, email);
     }
-
-    //Creating method for showing option for contacts
+    //Creating addressBookOptions  method for showing option for contacts
     public void addressBookOptions(AddressBook addressBook) {
         Scanner sc = new Scanner(System.in);
         while (true) {

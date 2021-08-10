@@ -1,5 +1,9 @@
 package com.bridgelabz;
 
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
+
+import java.io.IOException;
 import java.util.*;
 
 public class AddressBookMain {
@@ -11,8 +15,9 @@ public class AddressBookMain {
         Map<String, AddressBook> addressBookMap = new HashMap<String, AddressBook>();
         while (true) {
             System.out.println("\nWelcome to Address Book System");
-            System.out.println("1) New Address Book\n2) Select Address Book\n3) Delete Address Book\n" +
-                    "4) Search Contact Data\n5) View Contact Data\n6) Count Contacts\n7) Write data\n8) Read data\n9) Exit");
+            System.out.println("1)To New Address Book\n2)To Select Address Book\n3)To Delete Address Book\n" +
+                    "4)To Search Contact Data\n5)To View Contact Data\n6)To Count Contacts\n7)To Write data\n8)To Read data\n " +
+                    "9)To Write data into CsvFile\n10)To Read data into CsvFile\n11)Exit");
             System.out.print("Enter Your choice: ");
             int choice = sc.nextInt();
             sc.nextLine();
@@ -27,7 +32,7 @@ public class AddressBookMain {
                     addressBook.addressBookOptions(addressBookMap.get(bookName));
                     break;
                 case 2:
-                    System.out.println("List of available Address Book : ");
+                    System.out.println("the available Address Books : ");
                     //retrieving keys from hashmap to show addressBookList
                     Set keys = addressBookMap.keySet();
                     Iterator i = keys.iterator();
@@ -51,15 +56,12 @@ public class AddressBookMain {
                     addressBookMap.remove(name);
                     break;
                 case 4:
-                    System.out.println("Welcome to the search option:");
                     addressBook.searchByOptions();
                     break;
                 case 5:
-                    System.out.println("Welcome to view By Option:");
                     addressBook.viewByOption(addressBookMap);
                     break;
                 case 6:
-                    System.out.println("Welcome to the counter");
                     addressBook.countByOption();
                     break;
                 case 7:
@@ -67,10 +69,24 @@ public class AddressBookMain {
                     addressBookFileIO.writeData(addressBookMap);
                     break;
                 case 8:
-                    AddressBookFileIO addressBookFileIO2 = new AddressBookFileIO();
-                    System.out.println(addressBookFileIO2.readData());
+                    AddressBookFileIO addressBookFileIOS = new AddressBookFileIO();
+                    System.out.println(addressBookFileIOS.readData());
                     break;
                 case 9:
+                    try {
+                        AddressBookCSV.writeDataToCSV();
+                    }catch (IOException | CsvRequiredFieldEmptyException | CsvDataTypeMismatchException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 10:
+                    try {
+                        AddressBookCSV.readDataFromCSV();
+                    }catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 11:
                     sc.close();
                     return;
                 default:

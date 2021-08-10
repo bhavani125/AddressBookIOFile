@@ -1,0 +1,1 @@
+family: Contacts{firstName='bhavani', lastName='girineni', address='1-112', city='karimnagar', state='telanagana', zip=505142, phone=9989464121, email='girinenibhavani12@gmail.com'}
