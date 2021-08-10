@@ -11,7 +11,6 @@ import com.opencsv.exceptions.CsvValidationException;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
-import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static java.nio.file.Files.newBufferedReader;
@@ -24,8 +23,8 @@ public class AddressBookCSV {
             StatefulBeanToCsvBuilder<Contacts> builder = new StatefulBeanToCsvBuilder<>(writer);
             StatefulBeanToCsv<Contacts> beanWriter = builder.build();
             beanWriter.write(AddressBook.contactArrayList);
-            writer.close();
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -44,7 +43,8 @@ public class AddressBookCSV {
                 System.out.println("Phone Number = " + nextRecord[5]);
                 System.out.println("Zip Code = " + nextRecord[7]);
             }
-        } catch (CsvValidationException e) {
+        }
+        catch (CsvValidationException e) {
             e.printStackTrace();
         }
     }

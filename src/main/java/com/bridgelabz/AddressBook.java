@@ -182,7 +182,7 @@ public class AddressBook {
                 case 6:
                     return;
                 default:
-                    System.out.println("Invalid Choice!");
+                    System.out.println("Invalid");
                     break;
             }
         }
